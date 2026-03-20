@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Магазин квітів - інтерактивне меню</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+background-color: #fff5f8;
+margin: 20px;
+}
+h1 {
+color: #c2185b;
+}
+nav {
+margin-bottom: 20px;
+}
+nav a, nav .dropdown-btn {
+text-decoration: none;
+background-color: #e91e63;
+color: white;
+padding: 12px 18px;
+margin-right: 8px;
+border-radius: 10px;
+cursor: pointer;
+display: inline-block;
+}
+nav a:hover, nav .dropdown-btn:hover {
+background-color: #c2185b;
+}
+/* Для підменю кнопок */
+.dropdown-btn {
+position: relative;
+}
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: #f8bbd0;
+min-width: 180px;
+border-radius: 8px;
+box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+padding: 8px 0;
+z-index: 100;
+}
+.dropdown-content a {
+display: block;
+padding: 8px 18px;
+color: black;
+margin: 5px 10px;
+border-radius: 6px;
+}
+.dropdown-content a:hover {
+background-color: #e91e63;
+color: white;
+}
+/* Показ підменю при кліку */
+.show-dropdown .dropdown-content {
+display: block;
+}
+/* Контентні блоки */
+.content-block {
+display: none;
+background: white;
+border-radius: 12px;
+padding: 20px;
+box-shadow: 0 0 12px rgba(194, 24, 91, 0.2);
+}
+.content-block.active {
+display: block;
+}
+</style>
+</head>
+<body>
+
+<h1>Магазин квітів "FlowerShop"</h1>
+
+<nav>
+<a href="#" data-target="home">Головна</a>
+
+<div class="dropdown-btn" tabindex="0">
+Каталог ▾
+<div class="dropdown-content">
+<a href="#" data-target="bukety">Букети</a>
+<a href="#" data-target="korobky">Квіти в коробках</a>
+<a href="#" data-target="podarunky">Подарункові набори</a>
+<a href="#" data-target="podiї">За подіями</a>
+</div>
+</div>
+
+<div class="dropdown-btn" tabindex="0">
+Інформація ▾
+<div class="dropdown-content">
+<a href="#" data-target="pro-nas">Про нас</a>
+<a href="#" data-target="dostavka">Доставка і оплата</a>
+<a href="#" data-target="blog">Блог</a>
+<a href="#" data-target="kontakty">Контакти</a>
+</div>
+</div>
+</nav>
+
+<!-- КОНТЕНТ -->
+<div id="home" class="content-block active">
+<h2>Ласкаво просимо до FlowerShop!</h2>
+<p>У нас найкрасивіші квіти для будь-якої події.</p>
+</div>
+
+<div id="bukety" class="content-block">
+<h2>Букети</h2>
+<ul>
+<li>Троянди — класика, що не виходить з моди</li>
+<li>Тюльпани — весняний настрій</li>
+<li>Авторські композиції — унікальні і неповторні</li>
+</ul>
+</div>
+
+<div id="korobky" class="content-block">
+<h2>Квіти в коробках</h2>
+<p>Оригінальні коробки з квітами різних форм: круглі, у формі серця, преміум-композиції.</p>
+</div>
+
+<div id="podarunky" class="content-block">
+<h2>Подарункові набори</h2>
+<p>Квіти з солодощами, іграшками та святковими сюрпризами.</p>
+</div>
+
+<div id="podiї" class="content-block">
+<h2>Квіти за подіями</h2>
+<ul>
+<li>День народження</li>
+<li>Весілля</li>
+<li>8 Березня</li>
+</ul>
+</div>
+
+<div id="pro-nas" class="content-block">
+<h2>Про нас</h2>
+<p>Ми — команда професіоналів, яка любить квіти та створює красу для вас.</p>
+</div>
+
+<div id="dostavka" class="content-block">
+<h2>Доставка і оплата</h2>
+<p>Швидка доставка по місту, зручні способи оплати, гарантія якості.</p>
+</div>
+
+<div id="blog" class="content-block">
+<h2>Блог</h2>
+<p>Корисні поради по догляду за квітами, флористичні тренди та ідеї подарунків.</p>
+</div>
+
+<div id="kontakty" class="content-block">
+<h2>Контакти</h2>
+<p>Телефон: +380 99 123 45 67<br>Адреса: вул. Квіткова, 10, Київ</p>
+</div>
+
+<script>
+// Обробка кліків меню
+document.querySelectorAll('nav a[data-target]').forEach(link => {
+link.addEventListener('click', function(e) {
+e.preventDefault();
+const targetId = this.getAttribute('data-target');
+showContent(targetId);
+closeAllDropdowns();
+});
+});
+
+// Показати потрібний контент, сховати інші
+function showContent(id) {
+document.querySelectorAll('.content-block').forEach(block => {
+block.classList.toggle('active', block.id === id);
+});
+}
+
+// Відкривання/закривання підменю по кліку на кнопки
+document.querySelectorAll('.dropdown-btn').forEach(btn => {
+btn.addEventListener('click', function(e) {
+e.stopPropagation();
+this.classList.toggle('show-dropdown');
+});
+});
+
+// Закрити всі підменю, якщо клік поза меню
+document.addEventListener('click', () => {
+closeAllDropdowns();
+});
+
+function closeAllDropdowns() {
+document.querySelectorAll('.dropdown-btn').forEach(btn => {
+btn.classList.remove('show-dropdown');
+});
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Магазин квітів</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>Магазин квітів "FlowerShop"</h1>
+
+<nav class="menu">
+<a href="#">Головна</a>
+
+<div class="dropdown">
+<a href="#">Каталог ▾</a>
+<div class="dropdown-content">
+<a href="#">Букети</a>
+<a href="#">Квіти в коробках</a>
+<a href="#">Подарункові набори</a>
+<a href="#">За подіями</a>
+</div>
+</div>
+
+<div class="dropdown">
+<a href="#">Інформація ▾</a>
+<div class="dropdown-content">
+<a href="#">Про нас</a>
+<a href="#">Доставка і оплата</a>
+<a href="#">Блог</a>
+<a href="#">Контакти</a>
+</div>
+</div>
+</nav>
+
+<h2>Наші популярні квіти</h2>
+
+<div class="products">
+
+<div class="product">
+<img src="images/bouquet.jpg" alt="Букет">
+<h3>Рожевий букет</h3>
+<p>Ціна: 900 грн</p>
+<button>Купити</button>
+</div>
+
+<div class="product">
+<img src="images/rose.jpg" alt="Троянди">
+<h3>Червоні троянди</h3>
+<p>Ціна: 1200 грн</p>
+<button>Купити</button>
+</div>
+
+<div class="product">
+<img src="images/tulip.jpg" alt="Тюльпани">
+<h3>Весняні тюльпани</h3>
+<p>Ціна: 700 грн</p>
+<button>Купити</button>
+</div>
+
+</div>
+
+<footer>
+<p>© 2026 FlowerShop | Доставка квітів</p>
+</footer>
+
+</body>
+</html>
